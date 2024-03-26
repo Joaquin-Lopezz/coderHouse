@@ -1,0 +1,123 @@
+[
+  {
+    "title": "hola",
+    "description": "Este es un producto prueba",
+    "price": 100,
+    "thumbnail": "sin imagen",
+    "code": "abc1234hola",
+    "stock": 25,
+    "category": "pelota",
+    "status": true,
+    "id": 1
+  },
+  {
+    "title": "2",
+    "description": "Este es un producto prueba",
+    "price": 100,
+    "thumbnail": "sin imagen",
+    "code": "abc1hola",
+    "stock": 205,
+    "category": "pelota",
+    "status": true,
+    "id": 2
+  },
+  {
+    "title": "casa",
+    "description": "Este es un producto prueba",
+    "price": 100,
+    "thumbnail": "sin imagen",
+    "code": "11",
+    "stock": 25,
+    "category": "pelota",
+    "status": true,
+    "id": 3
+  },
+  {
+    "title": "silla",
+    "description": "comoda",
+    "price": 100,
+    "thumbnail": "sin imagen",
+    "code": "12445644",
+    "stock": 25,
+    "category": "pelota",
+    "status": true,
+    "id": 4
+  },
+  {
+    "title": "silla",
+    "description": "Este es un producto prueba",
+    "price": 150,
+    "thumbnail": "sin imagen",
+    "code": "addsaf",
+    "stock": 205,
+    "category": "hogar",
+    "status": true,
+    "id": 5
+  },
+  {
+    "title": "silla",
+    "description": "Este es un producto prueba",
+    "price": 1500,
+    "thumbnail": "sin imagen",
+    "code": "addasdassaf",
+    "stock": 205,
+    "category": "hogar",
+    "status": true,
+    "id": 6
+  },
+  {
+    "title": "skate",
+    "description": "Este es un producto prueba",
+    "price": 10,
+    "thumbnail": "sin imagen",
+    "code": "sadssdfdf",
+    "stock": 205,
+    "category": "hogar",
+    "status": true,
+    "id": 7
+  },
+  {
+    "title": "teclado",
+    "description": "Este es un producto prueba",
+    "price": 10,
+    "thumbnail": "sin imagen",
+    "code": "sadsdf",
+    "stock": 205,
+    "category": "hogar",
+    "status": true,
+    "id": 8
+  },
+  {
+    "title": "teclado",
+    "description": "Este es un producto prueba",
+    "price": 104,
+    "thumbnail": "sin imagen",
+    "code": "safsddsdf",
+    "stock": 205,
+    "category": "hogar",
+    "status": true,
+    "id": 9
+  },
+  {
+    "title": "tv",
+    "description": "Este es un producto prueba",
+    "price": 300,
+    "thumbnail": "sin imagen",
+    "code": "safsdf",
+    "stock": 205,
+    "category": "hogar",
+    "status": true,
+    "id": 10
+  },
+  {
+    "title": "tv",
+    "description": "Este es un producto prueba",
+    "price": 3050,
+    "thumbnail": "sin imagen",
+    "code": "safsd45f",
+    "stock": 205,
+    "category": "hogar",
+    "status": true,
+    "id": 11
+  }
+]

@@ -1,0 +1,17 @@
+{
+    "type": "module",
+    "name": "6---express",
+    "version": "1.0.0",
+    "description": "",
+    "main": "src/main.js",
+    "scripts": {
+        "dev": "nodemon"
+        
+    },
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+
+        "nodemon": "^3.1.0"
+    }
+}
