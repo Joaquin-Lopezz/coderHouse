@@ -1,0 +1,46 @@
+[
+  {
+    "title": "hola",
+    "description": "Este es un producto prueba",
+    "price": 100,
+    "thumbnail": "sin imagen",
+    "code": "abc1234hola",
+    "stock": 25,
+    "category": "pelota",
+    "status": true,
+    "id": 1
+  },
+  {
+    "title": "2",
+    "description": "Este es un producto prueba",
+    "price": 100,
+    "thumbnail": "sin imagen",
+    "code": "abc1hola",
+    "stock": 205,
+    "category": "pelota",
+    "status": true,
+    "id": 2
+  },
+  {
+    "title": "casa",
+    "description": "Este es un producto prueba",
+    "price": 100,
+    "thumbnail": "sin imagen",
+    "code": "11",
+    "stock": 25,
+    "category": "pelota",
+    "status": true,
+    "id": 3
+  },
+  {
+    "title": "silla",
+    "description": "comoda",
+    "price": 100,
+    "thumbnail": "sin imagen",
+    "code": "12445644",
+    "stock": 25,
+    "category": "pelota",
+    "status": true,
+    "id": 4
+  }
+]
