@@ -1,0 +1,71 @@
+<form >
+    <h2>Real Time Products</h2>
+<div>
+ <label for="title" class="form-label">Producto</label>
+        <input class="form-control" type="text" name="title" id="title"  required>
+</div>
+    
+<div >
+        <label for="description"  class="form-label">Descripción</label>
+        <input class="form-control" type="text" name="description" id="description"required>
+    </div>
+
+<div >
+        <label for="stock"  class="form-label">Stock</label>
+        <input class="form-control" type="number" name="stock" id="stock"required>
+    </div>
+
+<div>
+        <label for="thumbnail"  class="form-label" >Imagen (URL)</label>
+        <input class="form-control" type="text" name="thumbnail" id="thumbnail">
+    </div>
+
+<div>
+        <label for="category"  class="form-label">Categoría</label>
+        <input class="form-control" type="text" name="category" id="category"required>
+    </div>
+
+<div> 
+        <label for="price"  class="form-label">Precio</label>
+        <input class="form-control" type="number" name="price" id="price"required>
+    </div>
+
+    <div>
+<input name="status" class="form-check-input" type="checkbox" value="true" id="flexCheckChecked" checked>
+        <label class="form-check-label" for="flexCheckChecked">
+            Status
+        </label>
+    </div>
+
+<div>
+        <label for="code"  class="form-label">Código</label>
+        <input class="form-control" type="text" name="code" id="code"required>
+    </div>
+    <div>
+
+    <button class="btn btn-primary" type="submit" id="add-btn">Registrar </button>
+</div>  
+    <h2>Eliminar Producto:</h2>
+<div>
+        <label for="id-prod"  class="form-label">ID del Producto</label>
+        <input class="form-control" type="number" name="id-prod" id="id-prod" placeholder="Ej. 123">
+    </div>
+    <div>
+
+    <button class="btn btn-danger" type="button" id="delete-btn">Eliminar</button>
+    </div>
+</form>
+
+
+
+
+
+
+
+<div id="list-products">
+
+</div>
+       
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="/js/realtime.js"></script>

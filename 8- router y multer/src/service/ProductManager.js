@@ -19,13 +19,16 @@ class ProductManager {
                 ...this.products.map((productos) => productos.id)
             );
             this.counterId = maxId + 1;
-        } else {
+        }
+        //esta parte esta de mas
+        else {
             this.counterId = 1;
         }
     }
 
-    async addProducts(producto) {
-        //verifica que el codigo no exista  y agrega el prodcuto a products y lo guarda con la funcion saveProducts
+    addProducts(producto) {
+        //verifica que el codigo no exista  y agrega el prodcuto a products y
+        // lo guarda con la funcion saveProducts
         const codeExists = this.products.some(
             (aux) => aux.code === producto.code
         );
@@ -35,20 +38,22 @@ class ProductManager {
         producto.id = this.counterId;
         this.products.push(producto);
         this.counterId++;
-        await this.saveProducts();
+        this.saveProducts();
         return true;
     }
 
     saveProducts() {
         //guarda los datos en el path en formato json
-        const data = JSON.stringify(this.products, null, 2);
+        const data = JSON.stringify(this.products);
         fs.writeFileSync(this.path, data);
-        //console.log('los datos fueron guardados.');
+        console.log('los datos fueron guardados.');
     }
 
-    async getProducts(limit) {
+    getProducts(limit) {
         //returna los datos de products
-        const productos = await [...this.products];
+
+        //modifique [...this.products]  por this.products ya que es igual
+        const productos = this.products;
         if (limit) {
             return productos.slice(0, limit);
         }
@@ -90,7 +95,6 @@ class ProductManager {
         const index = this.products.findIndex((producto) => producto.id == id);
 
         if (index !== -1) {
-            console.log(this.products);
             this.products.splice(index, 1);
             this.saveProducts();
             return true;
@@ -123,7 +127,6 @@ export class Producto {
     }
 
     validacionDeBoolean(bool) {
-        console.log(typeof bool);
         if (typeof bool === 'boolean') {
             return bool;
         }

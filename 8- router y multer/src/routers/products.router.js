@@ -9,12 +9,15 @@ const productManager = new ProductManager(
 );
 
 productsRounter.get('/', async (req, res) => {
+    //obtener productos
+    // el async await no deberia ir 
     const limit = parseInt(req.query.limit) || undefined;
     const productoLimite = await productManager.getProducts(limit);
     res.send(productoLimite);
 });
 
 productsRounter.get('/:pid', async (req, res) => {
+    //obtenemos el producto por el id pasado por parametro
     const id = parseInt(req.params.pid);
 
     if (isNaN(id)) {
@@ -31,7 +34,8 @@ productsRounter.get('/:pid', async (req, res) => {
 });
 
 productsRounter.post('/', async (req, res) => {
-    console.log(req.body);
+    //agregar producto al alchivo json
+    
     const producto = new Producto(req.body);
     const newProducts = await productManager.addProducts(producto);
     if (newProducts) {
@@ -42,6 +46,8 @@ productsRounter.post('/', async (req, res) => {
 });
 
 productsRounter.put('/:pid', async (req, res) => {
+
+    // actulizar datos de un producto
     const id = parseInt(req.params.pid);
     const nuevosValores = req.body;
     const datosActualizados = await productManager.updateProducts(

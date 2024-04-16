@@ -1,0 +1,24 @@
+[
+  {
+    "id": 1,
+    "title": "casa",
+    "description": "asdasd",
+    "price": "100",
+    "category": "casa",
+    "status": true,
+    "thumbnail": "sin imajen",
+    "code": "asv1",
+    "stock": "1"
+  },
+  {
+    "id": 2,
+    "title": "auto",
+    "description": "modelo 2005",
+    "price": "10000",
+    "category": "automovil",
+    "status": true,
+    "thumbnail": "sin imagen",
+    "code": "avc",
+    "stock": "1"
+  }
+]

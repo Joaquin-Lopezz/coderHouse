@@ -8,11 +8,13 @@ const cartsManager = new CartsManager(
 );
 
 cartsRounter.post('/', (req, res) => {
+    // crea una carrito
     const newcarts = cartsManager.newcarts();
     res.status(201).send(newcarts);
 });
 
 cartsRounter.get('/:cid', (req, res) => {
+    //obtener los productos del carrito al que pertenesca el id
     const id = parseInt(req.params.cid);
     if (isNaN(id)) {
         res.status(400).send('ingrese un numero como ID.');
@@ -27,6 +29,7 @@ cartsRounter.get('/:cid', (req, res) => {
 });
 
 cartsRounter.post('/:cid/product/:pid', (req, res) => {
+    // agregar un producto al carrito del id correspondiente
     const cid = parseInt(req.params.cid);
     if (isNaN(cid)) {
         res.status(400).send('ingrese un numero como ID.');
@@ -37,8 +40,12 @@ cartsRounter.post('/:cid/product/:pid', (req, res) => {
         res.status(400).send('ingrese un numero como ID.');
         return;
     }
+
     const cartsId = cartsManager.cartId(cid);
+
     if (cartsId) {
+        // modificar logica ?   llamar al product manager y eliminar 
+        // la funcion de cartsmanager
         const prodcutoId = cartsManager.productoByid(pid);
         if (prodcutoId) {
             cartsManager.addProductToCart(cartsId, prodcutoId);

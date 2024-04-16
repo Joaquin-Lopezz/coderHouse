@@ -15,6 +15,8 @@ class CartsManager {
             const data = fs.readFileSync(this.path);
             this.carritos = JSON.parse(data);
             console.log('los datos fueron cargados.');
+            // esto esta de mas
+
             if (this.carritos.length == 0) {
                 this.counterId = 1;
             } else {
@@ -22,7 +24,9 @@ class CartsManager {
                     ...this.carritos.map((carritos) => carritos.id)
                 );
                 this.counterId = maxId + 1;
+                
             }
+            // los mismo que en products esto esta de mas
         } else {
             this.counterId = 1;
         }
@@ -32,7 +36,7 @@ class CartsManager {
         const cart = new Carts(this.counterId);
         this.carritos.push(cart);
         this.counterId++;
-        await this.saveCarritos();
+        this.saveCarritos();
         return true;
     }
 
