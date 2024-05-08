@@ -1,0 +1,40 @@
+<h1>carrito ID :{{carritoId}}</h>
+<style>
+    .carts-list {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+    }
+    .carts-list li {
+        border: 1px solid #ccc;
+        margin: 10px 0;
+        padding: 10px;
+        border-radius: 5px;
+        background-color: #f8f8f8; /* Color de fondo para cada elemento de la lista */
+    }
+    .carts-list li span {
+        display: block;
+        margin-bottom: 5px;
+        font-size: 0.3em;
+        color: #333; /* Color del texto */
+    }
+   
+</style>
+
+<ul class="carts-list">
+<ul>
+
+{{#each carts}}
+    <li>
+        <span>ID: {{producto._id}}</span>
+        <span>title: {{producto.title}}</span>
+        <span>description: {{producto.description}}</span>
+        <span>price: {{producto.price}}</span>
+        <span>thumbnail: {{producto.thumbnail}}</span>
+        <span>code: {{producto.code}}</span>
+        <span>stock: {{producto.stock}}</span>
+        <span>category: {{producto.category}}</span>
+        <span>quantity: {{quantity}}</span>
+    </li>
+{{/each}}
+</ul>

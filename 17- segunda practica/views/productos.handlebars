@@ -1,0 +1,60 @@
+<h1>Producto</h1>
+<style>
+    .product-list {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+    }
+    .product-list li {
+        border: 1px solid #ccc;
+        margin: 10px 0;
+        padding: 10px;
+        border-radius: 5px;
+    }
+    .product-list li span {
+        display: block;
+        margin-bottom: 5px;
+    }
+</style>
+
+<ul class="product-list">
+   {{#each productos}}
+    <li>
+        <span>ID: {{_id}}</span>
+        <span>title: {{title}}</span>
+        <span>description: {{description}}</span>
+        <span>price: {{price}}</span>
+        <span>thumbnail: {{thumbnail}}</span>
+        <span>code: {{code}}</span>
+        <span>stock: {{stock}}</span>
+        <span>category: {{category}}</span>
+        <button onclick="addToCart('{{_id}}')">Agregar al carrito</button>
+    </li>
+{{/each}}   
+
+</ul>
+
+<br>
+<a href="/products?pagina=1">Pág.1</a>
+
+{{#if hasPrevPage}}
+    <a href="/products?pagina={{prevPage}}  ">Ant.</a>
+{{/if}}
+
+{{#if hasNextPage}}
+    <a href="/products?pagina={{nextPage}}  "  >Sig.</a>
+{{/if}}
+
+<a href="/products?pagina={{totalPages}}    ">Ult.Pág.</a>
+<br>
+<label for="paginaActual"></label>
+<input type="number" max="{{totalPages}}" min="1" step="1" id="paginaActual" name="paginaActual" value="{{page}}" onchange="cambioPagina()">
+
+
+<script>
+    let inputPaginaActual=document.getElementById("paginaActual")
+    const cambioPagina=()=>{
+        window.location.href="/products?pagina="+inputPaginaActual.value
+    }
+</script>
+

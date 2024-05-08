@@ -57,6 +57,10 @@ productosRouter.put('/:pid', async (req, res) => {
             nuevosValores
         );
 
+        if (productoActualizado.matchedCount != 1) {
+            return res.status(400).send('id de producto no existe');
+        }
+
         res.send(`Se actualizo el producto con Id: ${idString}  `);
     } catch (error) {
         console.log(error);

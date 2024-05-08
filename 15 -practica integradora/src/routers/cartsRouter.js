@@ -21,10 +21,11 @@ cartsRouter.get('/:cid', async (req, res) => {
             .send(`no existe el carrito con id: ${carritoId} `);
     }
 
-    res.send(productosCarrito.products);
+    res.send(productosCarrito);
 });
 
 cartsRouter.post('/:cid/product/:pid', async (req, res) => {
+    //agregar un producto al carrito
     const carritoId = req.params.cid;
     const productoId = req.params.pid;
 
@@ -47,20 +48,22 @@ cartsRouter.post('/:cid/product/:pid', async (req, res) => {
     const productoIndex = carrito.products.findIndex(
         (item) => item.producto === productoId
     );
-    console.log(productoId);
+    
 
     if (productoIndex !== -1) {
         // El producto ya existe en el carrito, incrementar la cantidad
         carrito.products[productoIndex].quantity += 1;
     } else {
         // El producto no existe en el carrito, agregarlo al array con cantidad 1
-        carrito.products.push({ producto: productoId, quantity: 1 });
+        carrito.products.push({ producto: product._id, quantity: 1 });
     }
 
     await carrito.save();
 
     res.send(
         `Se agregó el producto con el ID: ${productoId}
-         al carrito con el ID: ${carritoId}`
+         al carrito con el ID: ${carritoId}
+
+        ${carrito}`
     );
 });
