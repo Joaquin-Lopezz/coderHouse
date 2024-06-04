@@ -1,4 +1,4 @@
-    import { Router } from 'express';
+import { Router } from 'express';
 import { cartsManager } from '../../models/carts.js';
 
 export const carritoRouter = Router();
@@ -34,7 +34,6 @@ carritoRouter.post('/addProduct/:cid', async (req, res) => {
     const carrito = await cartsManager.findById(carritoId);
     const productoAdd = req.body;
 
-
     const productoExistente = carrito.products.find(
         (itemProducto) => itemProducto.idProduct == productoAdd.producto['_id']
     );
@@ -43,12 +42,12 @@ carritoRouter.post('/addProduct/:cid', async (req, res) => {
         productoExistente.quantity += 1;
         await carrito.save();
     } else {
-        const aux =  {
-            idProduct : productoAdd.producto['_id'],
-            title : productoAdd.producto['title'],
-            price : productoAdd.producto['price'],
-            description : productoAdd.producto['description'],
-        }
+        const aux = {
+            idProduct: productoAdd.producto['_id'],
+            title: productoAdd.producto['title'],
+            price: productoAdd.producto['price'],
+            description: productoAdd.producto['description'],
+        };
 
         carrito.products.push(aux);
         await carrito.save();

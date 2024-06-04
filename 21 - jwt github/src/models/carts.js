@@ -41,3 +41,8 @@ const cartsSchema = new Schema(
     }
 );
 export const cartsManager = model('carritos', cartsSchema);
+
+
+
+
+

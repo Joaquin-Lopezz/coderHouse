@@ -30,7 +30,7 @@ usuariosRouter.post('/', async (req, res) => {
 });
 
 usuariosRouter.get('/current', soloLogueadosApi, async (req, res) => {
-    // @ts-ignore
+    // @ts-ignore   
     /*se utiliza el metodo findOne para que busque en la DB el primer objeto que coincida con el user extraer del req
   el password : 0 se pasa como argumento para excluir el campo de la contraseña del resultado
   finalmente se envia una respuesta json con el status completado y el payload con los datos obtenidos*/
@@ -43,7 +43,7 @@ usuariosRouter.get('/current', soloLogueadosApi, async (req, res) => {
 usuariosRouter.put('/', async function (req, res) {
     try {
         if (req.body.password) {
-            // si hay contraseña, la encripto!
+            // si hay contraseñ la encripto
             req.body.password = hashear(req.body.password);
         }
 

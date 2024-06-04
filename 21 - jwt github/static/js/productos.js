@@ -6,6 +6,7 @@ window.addEventListener('load', async () => {
     const usuarioJson = await userResponse.json();
     const usuario = usuarioJson.payload;
 
+    console.log(usuario['_id'])
     const carrito = await fetch(`/api/carrito/${usuario['_id']}`, {
         method: 'POST',
     });

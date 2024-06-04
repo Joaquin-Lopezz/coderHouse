@@ -1,4 +1,4 @@
-export const PORT = 8080
+export const PORT = 3000
 export const MONGODB_CNX_STR = 'mongodb+srv://UserCoder:YzyzdHbr8N94AFkK@cluster0.ixumopf.mongodb.net/clase19?retryWrites=true&w=majority&appName=Cluster0';
 export const SESSION_SECRET = 'SecretCoder'
 
