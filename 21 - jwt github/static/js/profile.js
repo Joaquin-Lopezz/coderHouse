@@ -9,21 +9,18 @@ window.addEventListener('load', async () => {
     }
     const result = await response.json();
     const usuario = result.payload;
-    console.log(usuario)
-    if(usuario){
+    console.log(usuario);
+    if (usuario) {
         spans[0].innerHTML = usuario.nombre;
         spans[1].innerHTML = usuario.apellido;
         spans[2].innerHTML = usuario.email;
         spans[3].innerHTML = usuario.rol;
-    }
-    
-    else{
+    } else {
         spans[0].innerHTML = 'admin';
         spans[1].innerHTML = 'admin';
         spans[2].innerHTML = 'admin';
         spans[3].innerHTML = 'admin';
     }
-   
 
     //cargar los datos del carrito que corresponda
     //con el id de usuario usuario['_id']
