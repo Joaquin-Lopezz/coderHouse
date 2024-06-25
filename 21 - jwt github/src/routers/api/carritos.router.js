@@ -32,6 +32,7 @@ carritoRouter.post('/addProduct/:cid', async (req, res) => {
     const carritoId = req.params.cid;
 
     const carrito = await cartsManager.findById(carritoId);
+    console.log(typeof(carrito))
     const productoAdd = req.body;
 
     const productoExistente = carrito.products.find(

@@ -31,7 +31,7 @@ window.addEventListener('load', async () => {
     if (carritoResponse.status == 200) {
         const carrito = await carritoResponse.json();
         /**/
-
+        console.log(carrito)
         mostrarProductosDelCarrito(carrito.products);
 
         //1 tengo que iterar result para extrar el id del producto y el quantity
@@ -40,7 +40,7 @@ window.addEventListener('load', async () => {
     }
 
     //agrega  Logout a la pagina de perfil
-    const ul = document.querySelector('nav ul');
+    const ul = document.querySelector('nav ul');    
     const liLogout = document.createElement('li');
     ul?.appendChild(liLogout);
     const aLogout = document.createElement('a');

@@ -1,0 +1,149 @@
+
+     <style>
+        .container {
+            display: flex;
+            justify-content: flex-start;
+            align-items: left;
+            width: 40%;
+            margin-left: 0;
+        }
+
+        .container button {
+            width: 100%; /* Hacer que el botón ocupe el 100% del ancho del contenedor */
+        }
+        #productos-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.producto-container {
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid #ccc;
+    padding: 10px;
+    width: 100%;
+}
+
+.producto-details {
+    flex: 1;
+    margin-right: 20px;
+}
+
+.form-container {
+    flex: 1;
+}
+
+.form-edicion {
+    border: 1px solid #ccc;
+    padding: 10px;
+    background: #f9f9f9;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-edicion label,
+.form-edicion input {
+    margin: 0px 0; /* Reduce el margen vertical */
+}
+
+
+.form-edicion input[type="text"],
+.form-edicion input[type="number"],
+.form-edicion input[type="checkbox"] {
+    width: 100%;
+    padding: 5px;
+    box-sizing: border-box;
+}
+
+.form-edicion button {
+    margin-top: 10px;
+}
+
+
+
+
+    </style>
+    <title>Administrador - Agregar Producto</title>
+    <link rel="stylesheet" href="/static/css/styles.css"> <!-- Agrega tu archivo CSS aquí -->
+    <style>
+        .form-group input[type="text"]{
+            font-size: 13px;
+        }
+        .form-group {
+            display: flex;
+            align-items: left;
+            margin-bottom: 0rem;
+            font-size:13px;
+        }
+      .form-group {
+    display: flex;
+    justify-content: flex-start;
+    align-items: left;
+    width: 40%; /* Ajusta el ancho del contenedor al 50% para que termine en la mitad de la página */
+     /* Centra el contenedor en la página */
+}
+
+.form-group label {
+    flex: 0.20;
+    margin-left: 0rem;
+}
+
+.form-group input {
+    flex: 1; /* Permite que el input tome el resto del espacio disponible */
+}
+        .form-group input[type="checkbox"] {
+            flex: 0;
+            margin-left: 0.1rem;
+            margin-right: ;
+        }
+    </style>
+
+<body>
+    <h1>Administrador</h1>
+    <h3>Nuevo Producto</h3>
+    <form>
+        <div class="form-group">
+            <label for="title">Título:</label>
+            <input type="text" id="title" name="title" required>
+        </div>
+        <div class="form-group">
+            <label for="description">Descripción:</label>
+            <input type="text" id="description" name="description">
+        </div>
+        <div class="form-group">
+            <label for="price">Precio:</label>
+            <input type="number" id="price" name="price">
+        </div>
+        <div class="form-group">
+            <label for="thumbnail">Thumbnail:</label>
+            <input type="text" id="thumbnail" name="thumbnail">
+        </div>
+        <div class="form-group">
+            <label for="code">Código:</label>
+            <input type="text" id="code" name="code">
+        </div>
+        <div class="form-group">
+            <label for="stock">Stock:</label>
+            <input type="number" id="stock" name="stock">
+        </div>
+        <div class="form-group">
+            <label for="category">Categoría:</label>
+            <input type="text" id="category" name="category">
+        </div>
+        <div class="form-group">
+            <label for="status">Estado:</label>
+            <input type="checkbox" id="status" name="status" value="true">
+        </div>
+        <body>
+    <div class="container">
+        <button type="submit">Agregar producto</button>
+    </div>
+</body>
+    </form>
+    <div id="productos-container"></div>
+
+
+    <script src="/static/js/agregarProducto.js"></script> <!-- Agrega tu archivo JS aquí -->
+</body>
+
