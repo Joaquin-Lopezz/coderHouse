@@ -53,6 +53,7 @@ export async function putcontroller(req, res, next) {
 
     const nuevosDatos = req.body;
     delete nuevosDatos._id;
+    console.log(nuevosDatos)
 
 
     if ('code' in nuevosDatos) {
@@ -66,9 +67,6 @@ export async function putcontroller(req, res, next) {
             { _id: idProduct },
             nuevosDatos
         );
-        console.log('productoActualizado: ',productoActualizado)
-        console.log('idProduct:',idProduct)
-        console.log('nuevos datos:',nuevosDatos);
 
         if (productoActualizado.matchedCount != 1) {
             return res.status(400).send('id de producto no existe');

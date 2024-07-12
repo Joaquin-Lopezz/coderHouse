@@ -19,9 +19,7 @@ class ProductoService {
         return await productosDao.deleteOne(id);
     }
 
-    async updateOne(id,datos) {
-       
-        return await productosDao.updateOne(id, datos);
+
     }
     async compareStock(idCarrito,productosCarritos){
 
