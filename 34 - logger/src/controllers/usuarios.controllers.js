@@ -25,12 +25,37 @@ export async function crearUsuario(req, res, next) {
 
 export async function getUserLogeado(req, res, next) {
     try {
+
         const usuario = await usuariosService.findOneUser(
             { email: req['user'].email },
             { password: 0 }
         );
-        
+    
         res.json({ status: 'success', payload: usuario });
+    } catch (error) {
+        next(error);
+    }
+}
+
+export async function editUser(req, res, next) {
+    try {
+        //if (req.body.password) {
+            // si hay contraseñ la encripto
+        //    req.body.password = hashear(req.body.password);
+        //}
+
+        const actualizado = await usuariosService.findOneAndUpdate(
+           // { email: req.body.email },
+            { $set: req.body },
+            { new: true }
+        );
+        if (!actualizado) {
+            return res
+                .status(404)
+                .json({ status: 'error', message: 'usuario no encontrado' });
+        }
+
+        res.json({ status: 'success', payload: actualizado });
     } catch (error) {
         next(error);
     }
