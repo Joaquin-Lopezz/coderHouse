@@ -1,0 +1,35 @@
+
+    <h1>Mi perfil</h1>
+    <ul>
+        <li>Nombre: <span id="spanNombre"></span></li>
+        <li>Apellido: <span id="spanApellido"></span></li>
+        <li>Correo electrónico: <span id="spanEmail"></span></li>
+        <li>Rol: <span id="spanRol"></span></li>
+    </ul>
+    <a href="/edit">Editar mis datos</a>
+
+    <h2>Mi carrito:</h2>
+    <div id="productos-carrito"></div>
+
+    <script src="/static/js/profile.js"></script>
+
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat de Ecommerce</title>
+    <link rel="stylesheet" href="css/styleChat.css">
+</head>
+<body>
+    <button id="chat-toggle">💬</button>
+    <div class="chat-container" id="chat-container">
+        <div class="chat-header" id="chat-header">Chat</div>
+        <div class="chat-messages" id="chat-messages"></div>
+        <div class="chat-input">
+            <input type="text" id="mensaje" placeholder="Escribe un mensaje...">
+            <button onclick="enviarMensaje()">Enviar</button>
+        </div>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="js/chat.js"></script>
+</body>

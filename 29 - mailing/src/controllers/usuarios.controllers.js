@@ -35,34 +35,5 @@ export async function getUserLogeado(req, res, next) {
         next(error);
     }
 }
-/*
-const usuario = await usuariosManager
-    .findOne({ email: req['user'].email }, { password: 0 })
-    .lean();
-res.json({ status: 'success', payload: usuario });
 
 
-
-/*async (req, res) => {
-    try {
-        req.body.password = hashear(req.body.password);
-
-        const usuario = await usuariosManager.create(req.body);
-
-        req.login(usuario.toObject(), (error) => {
-            if (error) {
-                res.status(401).json({
-                    status: 'error',
-                    message: error.message,
-                });
-            } else {
-                res.status(201).json({
-                    status: 'success',
-                    payload: usuario.toObject(),
-                });
-            }
-        });
-    } catch (error) {
-        res.status(400).json({ status: 'error', message: error.message });
-    }
-});*/

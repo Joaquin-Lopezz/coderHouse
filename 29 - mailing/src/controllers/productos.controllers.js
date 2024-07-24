@@ -50,9 +50,11 @@ export async function deletecontroller(req, res, next) {
 
 export async function putcontroller(req, res, next) {
     const idProduct = req.params.pid;
+
     const nuevosDatos = req.body;
     delete nuevosDatos._id;
     console.log(nuevosDatos)
+
 
     if ('code' in nuevosDatos) {
         return res
