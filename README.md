@@ -2,7 +2,7 @@
 
 # Proyecto de Ecomerce con Node.js
 
-Este proyecto de E-commerce desarrollado en Node.js incluye un sistema de autenticación que permite a los usuarios iniciar sesión utilizando credenciales locales o mediante GitHub. Los usuarios registrados pueden agregar productos a un carrito de compras y proceder con la compra, generando automáticamente un ticket que se envía por correo electrónico a través de Gmail. Además, para la gestión de productos, se requiere acceso de administrador para editar y añadir nuevos productos.
+Este proyecto de E-commerce desarrollado en Node.js incluye un sistema de autenticación que permite a los usuarios iniciar sesión utilizando credenciales locales o mediante GitHub, recuperacion de contraseña mediante del gmil . Los usuarios registrados pueden agregar productos a un carrito de compras y proceder con la compra, generando automáticamente un ticket que se envía por correo electrónico a través de Gmail. Además,los usuarios premium podran agregar productos y eliminar los que les pertenescan. Y para la gestión de productos, se requiere acceso de administrador para editar, eliminar y añadir nuevos productos.
 
 ## Dependencias
 
@@ -27,19 +27,27 @@ Este proyecto de E-commerce desarrollado en Node.js incluye un sistema de autent
 2. Abre la terminal y navega hasta la carpeta `src`.
 3. Ejecuta el siguiente comando para instalar las dependencias:  `npm run dev`
 4. inicia la aplicaion con: `npm run dev`
-5. Accede a la aplicación web en http://localhost:3000.
+5. Accede a la aplicación web en http://localhost:8080.
 
 
 ## USUARIOS
 
-## login ![image](https://github.com/Joaquin-Lopezz/AppEcomerce/assets/87286770/ed833248-8f90-4d94-bace-3b11fbcaab95)
+## login ![image](https://github.com/user-attachments/assets/bbac4caf-25e1-4a96-8d11-c822fc77bf6f)
 
-## productos  ![image](https://github.com/Joaquin-Lopezz/AppEcomerce/assets/87286770/5dd62fcb-d665-44ce-bbfc-4009d1bc0747)
+## perfil ![image](https://github.com/user-attachments/assets/90528ad1-44f1-4773-89fb-e9a1f30e6553)
 
-## perfil ![image](https://github.com/Joaquin-Lopezz/coderHouse/assets/87286770/3eb8e8fe-5a46-4252-92d5-760b05fb74cc)
+## info Perfil ![image](https://github.com/user-attachments/assets/833db8b9-ad19-42a3-ba26-08bcde39aebe)
+  
+## nuevo producto ![image](https://github.com/user-attachments/assets/f4efd994-28fc-4280-be77-ed3ee0ab95eb)
+
+## compra ![image](https://github.com/user-attachments/assets/5a4f1a83-d1f2-44fa-a986-271150c9a4ef)
+
+
 
 ## ADMIN
 
-## agregar producto ![image](https://github.com/Joaquin-Lopezz/coderHouse/assets/87286770/051ebaa3-ffe9-40b7-b417-8e32d7d07252)
+## vista de admin ![image](https://github.com/user-attachments/assets/a7fcc645-2bed-4086-b422-4bad6a25732e)
 
-## edit producto ![image](https://github.com/Joaquin-Lopezz/coderHouse/assets/87286770/b6120e05-d5b9-4e63-a889-d91d9444a5a5)
+![image](https://github.com/user-attachments/assets/9dc57258-5220-427a-befa-d688f5de0038)
+
+
