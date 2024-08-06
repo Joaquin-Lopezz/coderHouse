@@ -33,7 +33,9 @@ export async function getUserLogeado(req, res, next) {
         const usuario = await usuariosService.findOneUser(
             { email: req['user'].email },
             { password: 0 }
-        );
+        );  
+ 
+        
 
         res.json({ status: 'success', payload: usuario });
     } catch (error) {
@@ -109,7 +111,9 @@ export async function editUser(req, res, next) {
 export async function premium(req, res, next) {
     const { email, rol } = req.body;
     const rolUser = await usuariosService.updateRol(email, rol);
-    return res.status(200).json({ message: rolUser });
+    req.user.rol = rolUser.rol
+
+    return res.status(200).json({ message: rolUser.rol});
 }
 
 export async function newPassword(req, res, next) {

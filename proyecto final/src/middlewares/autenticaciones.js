@@ -45,7 +45,7 @@ passport.use(
             let usuario = await usuariosService.findOneUser({
                 email: profile.username,
             });
-            if (usuario.length === 0) {
+            if (!usuario) {
                 usuario = await usuariosService.createUsuario({
                     nombre: profile.displayName,
                     email: profile.username,

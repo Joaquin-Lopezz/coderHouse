@@ -5,11 +5,13 @@ import { logger } from '../utils/logger.js';
 
 export async function postCartsController(req, res, next) {
     try {
+
         const userId = req.params.userId;
         let carrito = await carritoService.findOne({ usuario: userId });
         res.setHeader('Content-Type', 'application/json');
         res.status(200).json({ carrito });
     } catch (error) {
+        console.log(error)
         if (error instanceof CustomError) {
             res.status(error.code).json({ error: error.message });
         } else {
@@ -25,7 +27,7 @@ export async function addProductCart(req, res, next) {
     //añadimos producto al carrito
     const { cid: carritoId } = req.params;
     const producto = req.body;
-
+  
     try {
         if (!producto || Object.keys(producto).length === 0) {
             return next(
@@ -37,7 +39,6 @@ export async function addProductCart(req, res, next) {
                 )
             );
         }
-
         const carrito = await carritoService.findByIdCart(carritoId);
 
         if (!carrito) {
@@ -49,7 +50,7 @@ export async function addProductCart(req, res, next) {
                     TIPOS_ERROR.NOT_FOUND
                 )
             );
-        }
+        }   
 
         await carritoService.addProductCart(carrito, producto);
 
@@ -64,8 +65,7 @@ export async function addProductCart(req, res, next) {
 export async function compraCarrito(req, res, next) {
     const carritoId = req.params.cid;
     const productos = req.body;
-    console.log(carritoId);
-    console.log(productos);
+ 
     try {
         const amount = await carritoService.getQuantityStock(
             carritoId,

@@ -23,6 +23,9 @@ export const cartsSchema = new Schema(
                     type: String,
                     required: true,
                 },
+                thumbnail: {
+                    type: String,
+                },
                 description: {
                     type: String,
                     required: true,
@@ -40,4 +43,3 @@ export const cartsSchema = new Schema(
         _id: false,
     }
 );
-

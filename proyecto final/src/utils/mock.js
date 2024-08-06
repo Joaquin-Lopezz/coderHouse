@@ -16,12 +16,12 @@ export const generateProduct = () => {
 };
 
 // Función para generar productos
-export const generateProducts = (numProducts = 100) => {
+export const generateProducts = (numProducts = 10) => {
     const products = [];
     for (let i = 0; i < numProducts; i++) {
         products.push(generateProduct());
     }
     return products;
 };
-
+    
 

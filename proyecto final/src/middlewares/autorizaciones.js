@@ -8,10 +8,25 @@ export function soloLogueadosApi(req, res, next) {
 }
 
 export function autorizacionUsuario(req, res, next) {
-    if(!req.user){
-        return res.redirect('/login'); 
+    if (!req.user) {
+        return res.redirect('/login');
     }
-  
+
+    if (req.user.rol !== 'admin') {
+        next();
+    } else {
+        res.redirect('/admin');
+    }
+}
+
+export function autorizacionProductos(req, res, next) {
+    if (req.user.rol !== 'premium') {
+        return res.redirect('/profile');
+    }
+    if (!req.user) {
+        return res.redirect('/login');
+    }
+
     if (req.user.rol !== 'admin') {
         next();
     } else {
@@ -20,9 +35,9 @@ export function autorizacionUsuario(req, res, next) {
 }
 
 export function autorizacionAdmin(req, res, next) {
-    if(!req.user){
-        return res.redirect('/login'); 
-    }   
+    if (!req.user) {
+        return res.redirect('/login');
+    }
     if (req.user.rol == 'admin') {
         next();
     } else {

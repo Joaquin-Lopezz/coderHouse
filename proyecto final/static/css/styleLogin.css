@@ -102,3 +102,11 @@ input {
 .forgot-btn:hover {
     background-color: #155CDA; /* Cambia el color de fondo cuando el botón es hover */
 }
+
+.register-btn{
+    background-color: #1877F2; /
+}
+
+.register-btn:hover {
+    background-color: #155CDA; /* Cambia el color de fondo cuando el botón es hover */
+}

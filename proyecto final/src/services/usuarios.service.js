@@ -11,24 +11,32 @@ class UsuariosService {
         return await usuariosDao.createUsuario(newUser);
     }
 
-    async findOneUser(datos) {
-        try {
-            const usuariogit = await usuariosDao.findOneUser(datos);
-            const usuario = usuariogit[0];
+        async findOneUser(datos) {
+            try {
+                const usuariogit = await usuariosDao.findOneUser(datos);
+                const usuario = usuariogit[0];
 
-            const datosUsuario = {
-                email: usuario['email'],
-                nombre: usuario['nombre'],
-                apellido: usuario['apellido'],
-                rol: usuario['rol'],
-            };
+                let datosUsuario = null
+                if(usuario){
+                    datosUsuario = {
+                        id  : usuario['_id'],
+                        email: usuario['email'],
+                        nombre: usuario['nombre'],
+                        apellido: usuario['apellido'],
+                        rol: usuario['rol'],
 
-            return datosUsuario;
-        } catch (error) {
-            logger.error(`${error}`);
-            throw error;
+                    };
+                }
+          
+            
+                
+
+                return datosUsuario;
+            } catch (error) {
+                logger.error(`${error}`);
+                throw error;
+            }
         }
-    }
     async findOneUserMongo(datos) {
         try {
             const usuarioMongo = await usuariosDao.findOneUserMongo(datos);
@@ -88,7 +96,7 @@ class UsuariosService {
                     email: usuario['email'],
                     nombre: usuario['nombre'],
                     apellido: usuario['apellido'],
-                    rol: 'usuario',
+                    rol: usuario['rol'],
                 };
             }
             return datosUsuario;

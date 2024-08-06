@@ -83,19 +83,26 @@ function mostrarProductos(productos) {
         formContainer.className = 'form-container';
 
         detailsElem.innerHTML = `
-            <h2>${producto.title}</h2>
-            <p>ID: ${producto._id}</p>
-            <p>descripcion${producto.description}</p>
-            <p>Precio: $${producto.price}</p>
-            <p>Thumbnail: ${producto.thumbnail}</p>
-            <p>Code: ${producto.code}</p>
-            <p>Stock: ${producto.stock}</p>
-            <p>Category: ${producto.category}</p>
-            <p>owner: ${producto.owner}</p>
-            <p>Status: ${producto.status}</p>
-            
-            <button data-id="${producto._id}" class="btn-eliminar">Eliminar</button>
-            <button data-id="${producto._id}" class="btn-editar">Editar</button>
+         <div class="product-card">
+    <h2 class="product-title">${producto.title}</h2>
+    <div class="product-image-container">
+        <img src="/static/images/${producto.thumbnail}" alt="Thumbnail del producto" class="product-thumbnail">
+    </div>
+    <div class="product-details">
+        <p><strong>ID:</strong> ${producto._id}</p>
+        <p><strong>Descripción:</strong> ${producto.description}</p>
+        <p><strong>Precio:</strong> $${producto.price}</p>
+        <p><strong>Código:</strong> ${producto.code}</p>
+        <p><strong>Stock:</strong> ${producto.stock}</p>
+        <p><strong>Categoría:</strong> ${producto.category}</p>
+        <p><strong>Propietario:</strong> ${producto.owner}</p>
+        <p><strong>Estado:</strong> ${producto.status ? 'Activo' : 'Inactivo'}</p>
+    </div>
+    <div class="product-actions">
+        <button data-id="${producto._id}" class="btn btn-eliminar">Eliminar</button>
+        <button data-id="${producto._id}" class="btn btn-editar">Editar</button>
+    </div>
+</div>
         `;
 
         productoElem.appendChild(detailsElem);

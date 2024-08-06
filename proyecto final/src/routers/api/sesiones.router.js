@@ -20,11 +20,16 @@ sesionesRouter.get('/current', soloLogueadosApi, (req, res) => {
 });
 
 sesionesRouter.delete('/current', (req, res) => {
-    req.session.destroy((err) => {
-        if (err) {
-            return res.status(500).json({ status: 'logout error', body: err });
-        }
-        res.json({ status: 'success', message: 'logout OK' });
-    });
+    try {
+        req.session.destroy((err) => {
+            if (err) {
+                return res.status(500).json({ status: 'logout error', body: err });
+            }
+            res.json({ status: 'success', message: 'logout OK' });
+        });
+    } catch (error) {
+        console.log(error)
+        next(error)    
+    }
 });
 

@@ -13,7 +13,9 @@ class CarritoService {
 
     async findOne(usuarioId) {
         try {
+         
             let carrito = await carritoDao.findCart(usuarioId);
+        
 
             if (!carrito) {
                 carrito = await carritoDao.create({
@@ -39,28 +41,33 @@ class CarritoService {
 
     async findByIdCart(id) {
         const carrito = await carritoDao.findByIdCart(id);
-
+      
         return carrito;
     }
 
     async addProductCart(carrito, productoAdd) {
+
         const productoExistente = carrito.products.find(
             (itemProducto) =>
                 itemProducto.idProduct == productoAdd.producto['_id']
         );
-        console.log('producto',     productoAdd);
-
         if (productoExistente) {
             productoExistente.quantity += 1;
         } else {
+            
             const aux = {
                 idProduct: productoAdd.producto['_id'],
                 title: productoAdd.producto['title'],
                 price: productoAdd.producto['price'],
                 description: productoAdd.producto['description'],
+                thumbnail: productoAdd.producto['thumbnail']
+                
             };
+        
             carrito.products.push(aux);
+          
         }
+        await carrito.save();
     }
 
     async getQuantityStock(idCarrito, productosCarritos) {

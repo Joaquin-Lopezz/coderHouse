@@ -1,3 +1,4 @@
+import { eliminacionCaracteresNoDesados } from '../middlewares/validacionProducto.js';
 import { productoService } from '../services/productos.service.js';
 import { CustomError } from '../utils/CustumErrors.js';
 import { TIPOS_ERROR } from '../utils/EError.js';
@@ -16,11 +17,10 @@ export async function getcontroller(req, res, next) {
 export async function postcontroller(req, res, next) {
     try {
         const newProduct = req.body;
+
         const productIdExists = await productoService.productById(
             newProduct['_id']
         );
-       
-
         if (productIdExists) {
             return next(
                 CustomError.createError(
@@ -31,24 +31,34 @@ export async function postcontroller(req, res, next) {
                 )
             );
         }
-
+        await eliminacionCaracteresNoDesados(newProduct);
+     
         const producto = await productoService.createProduct(newProduct);
-    
         res.setHeader('Content-Type', 'application/json');
         res.status(200).json(producto);
     } catch (error) {
-        console.log(error.name)
-        if(error.name === 'ValidationError'){
+        console.log(error)
+        if (error.name === 'MongoServerError') {
+            return next(
+                CustomError.createError(
+                    'clave Duplicada',
+                    error,
+                    'clave Duplicada',
+                    TIPOS_ERROR.PRODUCTO_EXISTENTE
+                )
+            );
+        }
+        if (error.name === 'ValidationError') {
             return next(
                 CustomError.createError(
                     'faltan completar datos',
                     error,
-                    'faltan completar datos',
+                    'numeros negativos o faltan completar datos',
                     TIPOS_ERROR.ARGUMENTOS_INVALIDOS
-                ))
+                )
+            );
         }
         if (error.name === 'StrictModeError') {
-            // Manejo de errores de validación de Mongoose
             return next(
                 CustomError.createError(
                     'Datos de producto inválidos',
@@ -68,14 +78,16 @@ export async function deletecontroller(req, res, next) {
         const id = req.params.pid;
         const productoDelete = await productoService.deleteOne({ _id: id });
         if (productoDelete.deletedCount > 0) {
-            return res.send(`Se elimino el producto con Id: ${id}  `);
+            return res.json({
+                message: `Se eliminó el producto con Id: ${id}`,
+            });
         } else {
             return res
                 .status(404)
                 .send(`no se encontro ningun producto con Id: ${id}`);
         }
     } catch (error) {
-        next(error)
+        next(error);
     }
 }
 
@@ -100,8 +112,7 @@ export async function putcontroller(req, res, next) {
     } catch (error) {}
 }
 
-
-export async function generatemock (req,res,next){ 
+export async function generatemock(req, res, next) {
     const products = generateProducts();
     res.send(products);
 }
