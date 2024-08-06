@@ -17,7 +17,7 @@ import {
 import { errorHandler } from './middlewares/errorhandler.js';
 import { logger, middLogger } from './utils/logger.js';
 
-logger;
+
 
 // Conexión a la base de datos
 await mongoose.connect(MONGODB_CNX_STR);
@@ -57,31 +57,22 @@ io.on('connection', (socket) => {
     });
 });
 
-// Servir archivos estáticos desde la carpeta 'public'
 app.use(express.static(path.join(path.resolve(), 'static')));
 
-//manejador de errores
 
+app.use(errorHandler);
 const specs = swaggerJSDoc(swaggerOptions)
 app.use('/apidocs', swaggerUiExpress.serve,swaggerUiExpress.setup(specs))
 
-app.use(errorHandler);
-// Iniciar el servidor
+
 server.listen(PORT, () => {
 
     logger.info(`Servidor escuchando peticiones en puerto: ${PORT}`);
 });
 
-app.get('/loggerTest', (req, res) => {
-    req.logger.debug('debug log ');
-    req.logger.http('http log');
-    req.logger.info('info log');
-    req.logger.warning('warning log');
-    req.logger.error('error log');
-    req.logger.fatal('fatal log');
 
-    res.send('prueba de logs.');
-});
+
+
 
 
 

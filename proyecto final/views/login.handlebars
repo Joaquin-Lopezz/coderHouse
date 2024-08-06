@@ -12,16 +12,18 @@
         <form>
             <div class="form-group">
                 <label for="email">Email</label>
-                <input type="email" name="email" placeholder="email" autocomplete="on"><br>
+                <input type="email" name="email" placeholder="email" autocomplete="on" required><br>
             </div>
             <div class="form-group">
                 <label for="password">Password</label>
-                <input name="password" type="password" placeholder="password"><br>
+                <input name="password" type="password" placeholder="password" required><br>
             </div>
             <button type="submit" class="login-btn">Loguearme!</button>
+             <a href="/register" class="btn register-btn">registrarse </a>
             <div class="links">
                 <a href="/githublogin" class="btn github-btn">Identificarte con GitHub</a>
                 <a href="/resetpassword" class="btn forgot-btn">¿Has olvidado tu contraseña?</a>
+                
             </div>
         </form>
     </div>

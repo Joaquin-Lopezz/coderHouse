@@ -16,7 +16,6 @@ export class productoDaoMongoose {
 
     async createProduct(newProduct) {
         const producto = await this.productosModel.create(newProduct);
-       
         return toPOJO(producto);
     }
 

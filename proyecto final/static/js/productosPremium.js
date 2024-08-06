@@ -23,6 +23,9 @@ window.addEventListener('load', async () => {
             const status = statusCheckbox.checked;
             const owner = usuario['email'];
 
+
+
+            
             const queryString = new URLSearchParams({
                 title,
                 description,
@@ -45,7 +48,7 @@ window.addEventListener('load', async () => {
          
             if (response.status === 200) {
                 alert('Producto agregado a la base de datos');
-                location.reload();
+               // location.reload();
             }
             else {
                 const errorData = await response.json();

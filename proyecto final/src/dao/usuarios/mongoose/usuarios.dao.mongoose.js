@@ -39,7 +39,9 @@ export class usuariosDaoMongoose {
             { rol: 'premium' },
             { new: true }
         );
-        return  'ahora eres usuario PREMIUM' ;
+    
+
+        return update;
     }
 
     async userUsuario(email) {
@@ -48,7 +50,8 @@ export class usuariosDaoMongoose {
             { rol: 'usuario' },
             { new: true }
         );
+      
 
-        return 'ya no eres usuario PREMIUM' ;
+        return  update ;
     }
 }

@@ -64,6 +64,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const result = await response.json();
             const usuario = result.payload;
+
             spans[0].textContent = usuario.nombre;
             spans[1].textContent = usuario.apellido;
             spans[2].textContent = usuario.email;
@@ -82,9 +83,11 @@ document.addEventListener('DOMContentLoaded', () => {
                     profileActions.appendChild(btnProductos);
                 }
             }
+       
 
             updatePremiumButton(usuario.rol, usuario.email);
-
+           
+            await loadCart(usuario.id, usuario.email);
             document.getElementById('logout').addEventListener('click', logout);
             document
                 .getElementById('btnProductos')
@@ -92,8 +95,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     'click',
                     () => (window.location.href = '/productos')
                 );
-
-            await loadCart(usuario['_id'], usuario.email);
         } catch (error) {
             console.error('Error cargando el perfil:', error);
         }
@@ -117,10 +118,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 },
                 body: JSON.stringify({ email, rol }),
             });
-
+        
             if (response.ok) {
                 const data = await response.json();
-                alert(data.message);
+                alert(`tu rol cambio a: ${data.message}`);
                 location.reload();
             } else {
                 alert('Error al cambiar el estado Premium.');
@@ -153,6 +154,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 method: 'POST',
             });
             const carrito = await carritoResponse.json();
+           
             renderCartProducts(carrito.carrito, email);
         } catch (error) {
             console.error('Error cargando el carrito:', error);
@@ -166,18 +168,23 @@ document.addEventListener('DOMContentLoaded', () => {
         productos.products.forEach((producto) => {
             const totalProducto = producto.price * producto.quantity;
             amount += totalProducto;
-
+            
+           
             const productoElem = document.createElement('div');
             const botonIdDelete = `delete-${producto.idProduct}`;
             productoElem.innerHTML = `
-                <div style="border: 1px solid #e0e0e0; padding: 12px; margin-bottom: 15px; border-radius: 6px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">
-                    <h2 style="font-size: 18px; margin-bottom: 8px; color: #333;">${producto.title}</h2>
-                    <p style="font-size: 12px; color: #777;">${producto.description}</p>
-                    <p style="font-size: 16px; font-weight: bold; color: #007bff;">ID: ${producto.idProduct} (Cantidad: ${producto.quantity})</p>
-                    <p style="font-size: 14px; color: #333; font-weight: bold;">Total: $${totalProducto}
-                        <button id="${botonIdDelete}" style="display: inline-block; border: 1px solid #007bff; padding: 6px 12px; border-radius: 6px; background-color: #ff0000; color: #fff; font-size: 14px; font-weight: bold; cursor: pointer;">Eliminar</button>
-                    </p>
-                </div>`;
+             <div style="border: 1px solid #e0e0e0; padding: 12px; margin-bottom: 15px; border-radius: 6px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); background-color: #f9f9f9; display: flex; align-items: center;">
+    <div style="flex-shrink: 0; margin-right: 12px;">
+        <img src="/static/images/${producto.thumbnail}" alt="Thumbnail del producto" style="width: 120px; height: 90px; border-radius: 6px;">
+    </div>
+    <div>
+        <h2 style="font-size: 18px; margin-bottom: 8px; color: #333; text-transform: capitalize;">${producto.title}</h2>
+        <p style="font-size: 16px; font-weight: bold; color: #007bff; margin-bottom: 4px;">(Cantidad: ${producto.quantity})</p>
+        <p style="font-size: 14px; color: #333; font-weight: bold; margin-bottom: 0;">Total: $${totalProducto}
+            <button id="${botonIdDelete}" style="border: none; padding: 6px 12px; border-radius: 6px; background-color: #dc3545; color: #fff; font-size: 14px; font-weight: bold; cursor: pointer; margin-left: 10px;">Eliminar</button>
+        </p>
+    </div>
+</div>`;
             container.appendChild(productoElem);
 
             document
@@ -230,7 +237,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     if (response.ok) {
                         const responseData = await response.json();
                         const amountCompra = responseData.payload.amount;
-
                         if (amountCompra === 0) {
                             alert(
                                 'No hay stock de ningún producto que compraste.'
@@ -250,11 +256,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
                             if (ticket.ok) {
                                 const ticketData = await ticket.json();
-
                                 alert(ticketData.message);
                                 await fetch(`/api/carrito/${productos._id}`, {
                                     method: 'DELETE',
                                 });
+
                                 location.reload();
                             } else {
                                 alert('Error al generar el ticket.');
